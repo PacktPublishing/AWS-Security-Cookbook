@@ -1,0 +1,8 @@
+aws s3 ls awsseccookbook \
+    --profile testuser
+
+aws s3api put-bucket-policy \
+    --bucket awsseccookbook \
+    --policy file://resources/bucket-policy-allow-test-user.json \
+    --profile awssecadmin
+

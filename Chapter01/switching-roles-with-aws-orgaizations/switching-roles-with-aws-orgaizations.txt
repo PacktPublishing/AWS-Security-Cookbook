@@ -1,0 +1,9 @@
+aws iam create-policy \
+--policy-name MyAssumeRolePolicyCLI \
+--policy-document file://resources/assume-role-policy-document.json \
+--profile awssecadmin
+
+aws iam attach-group-policy \
+--group-name testusergroup \
+--policy-arn arn:aws:iam::135301570106:policy/MyAssumeRolePolicyCLI \
+--profile awssecadmin

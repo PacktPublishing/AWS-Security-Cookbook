@@ -1,0 +1,9 @@
+aws iam create-policy \
+--policy-name MyS3ListPolicyCLI \
+--policy-document file://resources/my-s3-list-bucket-policy.json \
+--profile awssecadmin
+
+aws iam attach-group-policy \
+--group-name testusergroup \
+--policy-arn arn:aws:iam::135301570106:policy/MyS3ListPolicyCLI \
+--profile awssecadmin

@@ -1,0 +1,15 @@
+{
+  "Owner": {
+    "DisplayName": "awsseccookbook",
+    "ID": "5df5b6014ae606808dcb64208aa09e4f19931b3123456e152c4dfa52d38bf8fd"
+  },
+  "Grants": [
+    {
+      "Grantee": {
+        "Type": "CanonicalUser",
+        "ID": "e280db54f21834544a8162b8fc5d23851972d31e1ae3560240156fa14d66b952"
+      },
+      "Permission": "WRITE"
+    }
+  ]
+}

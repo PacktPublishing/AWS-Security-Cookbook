@@ -1,0 +1,21 @@
+aws s3 cp s3://awsseccookbook/image-heartin-k.png image-heartin-k.png \
+    --profile testuser
+
+aws s3 cp s3://awsseccookbook/image-heartin-k.png image-heartin-k.png \
+    --profile awssecadmin
+
+aws s3 cp image-heartin-k.png s3://awsseccookbook/image-heartin-new.png \
+    --acl public-read \
+    --profile awssecadmin
+
+aws s3 cp s3://awsseccookbook/image-heartin-new.png image-heartin-new.png \
+    --profile testuser
+
+aws s3api put-bucket-acl \
+    --bucket awsseccookbook \
+    --access-control-policy file://resources/acl-grant-authenticated-users.json \
+    --profile awssecadmin
+
+aws s3api get-bucket-acl \
+    --bucket awsseccookbook \
+    --profile awssecadmin

@@ -1,0 +1,39 @@
+aws organizations create-account \
+--email awsseccookbook1@gmail.com \
+--account-name awsseccookbookchild1 \
+--profile awssecadmin
+
+aws organizations describe-create-account-status \
+--create-account-request-id car-bb6f15308b7311e98b7112a0c7517226 \
+--profile awssecadmin
+
+aws organizations list-parents \
+--child-id 380701114427 \
+--profile awssecadmin
+
+aws organizations create-organizational-unit \
+--parent-id r-9dp3 \
+--name Test \
+--profile awssecadmin
+
+aws organizations move-account \
+--account-id 380701114427 \
+--source-parent-id r-9dp3 \
+--destination-parent-id ou-9dp3-moeksvq4 \
+--profile awssecadmin
+
+aws organizations list-parents \
+--child-id 380701114427 \
+--profile awssecadmin
+
+aws organizations describe-organization \
+--profile awssecadmin
+
+aws organizations list-children \
+--parent-id r-9dp3 \
+--child-type ORGANIZATIONAL_UNIT \
+--profile awssecadmin
+
+aws organizations describe-organizational-unit \
+--organizational-unit-id ou-9dp3-k78re8mv \
+--profile awssecadmin

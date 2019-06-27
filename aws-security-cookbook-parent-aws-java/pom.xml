@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>tech.heartin.books.serverlesscookbook</groupId>
+    <artifactId>serverless-cookbook-parent-aws-java</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>tech.heartin.starters</groupId>
+        <artifactId>simple-starter-parent-java</artifactId>
+        <version>1.0.1</version>
+    </parent>
+
+    <properties>
+        <aws.sdk.version>1.11.470</aws.sdk.version>
+        <aws.lambda.java.core.version>1.2.0</aws.lambda.java.core.version>
+        <aws.lambda.java.events.version>2.2.4</aws.lambda.java.events.version>
+        <ask.sdk.version>2.11.2</ask.sdk.version>
+        <aws.lambda.java.log4j2>1.1.0</aws.lambda.java.log4j2>
+    </properties>
+
+    <!-- Sample dependency declarations. -->
+    <!-- NEVER declare aws-java-sdk for a Lambda. Instead use specific ones you need (e.g. aws-java-sdk-iam). -->
+    <!--
+    <dependencies>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-core</artifactId>
+            <version>${aws.lambda.java.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-events</artifactId>
+            <version>${aws.lambda.java.events.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-log4j2</artifactId>
+            <version>${aws.lambda.java.log4j2}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-iam</artifactId>
+            <version>${aws.sdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-kinesis</artifactId>
+            <version>${aws.sdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.amazon.alexa</groupId>
+            <artifactId>ask-sdk</artifactId>
+            <version>${ask.sdk.version}</version>
+        </dependency>
+
+    </dependencies>
+    -->
+
+</project>

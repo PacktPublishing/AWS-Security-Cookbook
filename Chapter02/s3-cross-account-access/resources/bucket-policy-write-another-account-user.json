@@ -1,0 +1,22 @@
+{
+  "Id": "SomeUniqueId1",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllPutForOtherAccountUser",
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::awsseccookbook/*",
+      "Condition": {
+        "StringEquals": {"s3:x-amz-acl":"bucket-owner-full-control"}
+      },
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::380701114427:user/testuser"
+        ]
+      }
+    }
+  ]
+}

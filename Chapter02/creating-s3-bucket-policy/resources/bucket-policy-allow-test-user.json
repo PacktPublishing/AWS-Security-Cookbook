@@ -1,0 +1,19 @@
+{
+  "Id": "Policy1560416549842",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1560416546868",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::awsseccookbook",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::135301570106:user/testuser"
+        ]
+      }
+    }
+  ]
+}

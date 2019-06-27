@@ -1,0 +1,93 @@
+---------------------------------------------------
+-- Commands for cross account with ACL --
+---------------------------------------------------
+
+-- Put Bucket ACL as Account A admin --
+aws s3api put-bucket-acl \
+    --bucket awsseccookbook \
+    --access-control-policy file://resources/acl-write-another-account.json \
+    --profile awssecadmin
+
+
+-- Create policy with only PutObject --
+aws iam create-policy \
+    --policy-name MyS3PutObjAndAclPolicy \
+    --policy-document file://resources/iam-policy-s3-put-obj-and-acl.json \
+    --profile awschild1admin
+
+
+-- Create policy with only PutObject --
+aws iam attach-group-policy \
+    --group-name testusergroup \
+    --policy-arn arn:aws:iam::380701114427:policy/MyS3PutObjAndAclPolicy \
+    --profile awschild1admin
+
+
+-- Cleanup: detach policy --
+aws iam detach-group-policy \
+--group-name testusergroup \
+--policy-arn arn:aws:iam::380701114427:policy/MyS3PutObjAndAclPolicy \
+--profile awschild1admin
+
+
+-- Cleanup: delete policy --
+aws iam delete-policy \
+--policy-arn arn:aws:iam::380701114427:policy/MyS3PutObjAndAclPolicy \
+--profile awschild1admin
+
+
+
+
+---------------------------------------------------
+-- Commands for cross account with bucket policy --
+---------------------------------------------------
+aws s3api put-bucket-policy \
+    --bucket awsseccookbook \
+    --policy file://resources/bucket-policy-write-another-account-user.json \
+    --profile awssecadmin
+
+
+-- Create policy with only PutObject and PutObjectAcl--
+aws iam create-policy \
+--policy-name MyS3PutObjAclPolicyCLI \
+--policy-document file://resources/policy_delegate_s3_write_obj_acl.json \
+--profile awschild1admin
+
+
+-- Create policy with only PutObject and PutObjectAcl --
+aws iam attach-group-policy \
+--group-name testusergroup \
+--policy-arn arn:aws:iam::380701114427:policy/MyS3PutObjAclPolicyCLI \
+--profile awschild1admin
+
+
+
+---------------------------------------------------
+-- Commands for S3 Upload and Download --
+---------------------------------------------------
+
+-- Upload object as Account B admin --
+aws s3 cp image-heartin-k.png s3://awsseccookbook/image-from-b-admin.png \
+    --profile awschild1admin
+
+
+-- Upload object as Account B user --
+aws s3 cp image-heartin-k.png s3://awsseccookbook/image-from-b-user.png \
+    --profile child1_testuser
+
+
+-- Upload object as Account B admin with canned ACL --
+aws s3 cp image-heartin-k.png s3://awsseccookbook/image-from-b-user.png \
+    --acl bucket-owner-full-control \
+    --profile awschild1admin
+
+
+-- Upload object as Account B user with canned ACL --
+aws s3 cp image-heartin-k.png s3://awsseccookbook/image-from-b-user.png \
+    --acl bucket-owner-full-control \
+    --profile child1_testuser
+
+
+-- Download object as Account A admin --
+aws s3 cp s3://awsseccookbook/image-from-b-user.png image-from-b.json \
+    --profile awssecadmin
