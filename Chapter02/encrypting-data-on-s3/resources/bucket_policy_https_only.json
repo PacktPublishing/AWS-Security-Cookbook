@@ -1,0 +1,18 @@
+{
+  "Version": "2012-10-17",
+  "Id": "Policy1560580566354",
+  "Statement": [
+    {
+      "Sid": "Stmt1560580564894",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::awscookbook/*",
+      "Condition": {
+        "Bool": {
+          "aws:SecureTransport": "false"
+        }
+      }
+    }
+  ]
+}

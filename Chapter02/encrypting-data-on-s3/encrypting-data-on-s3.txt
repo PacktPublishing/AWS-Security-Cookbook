@@ -1,0 +1,22 @@
+-- Uploading with SSE-S3 encryption --
+aws s3 cp image-heartin-k.png s3://awsseccookbook/image-heartin-k.png \
+--sse AES256 \
+--profile awssecadmin
+
+-- Uploading with SSE-KMS encryption --
+aws s3 cp image-heartin-k.png s3://awsseccookbook/image-heartin-k.png \
+--sse aws:kms \
+--sse-kms-key-id cd6b3dff-cfe1-45c2-b4f8-b3555d5086df \
+--profile awssecadmin
+
+-- Uploading with SSE-C encryption --
+aws s3 cp image-heartin-k.png s3://awsseccookbook/image-heartin-k.png \
+--sse-c AES256 \
+--sse-c-key 12345678901234567890123456789012 \
+--profile awssecadmin
+
+-- Downloading with SSE-KMS encryption --
+aws s3 cp s3://awsseccookbook/image-heartin-k.png image-heartin-k1.png \
+--sse-c AES256 \
+--sse-c-key 12345678901234567890123456789012 \
+--profile awssecadmin

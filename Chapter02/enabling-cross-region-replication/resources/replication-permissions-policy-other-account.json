@@ -17,10 +17,11 @@
         "s3:ReplicateObject",
         "s3:ReplicateDelete",
         "s3:ReplicateTags",
-        "s3:GetObjectVersionTagging"
+        "s3:GetObjectVersionTagging",
+        "s3:ObjectOwnerOverrideToBucketOwner"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::awsseccookbookmumbai/*"
+      "Resource": "arn:aws:s3:::awsseccookbookbackupmumbai/*"
     }
   ]
 }

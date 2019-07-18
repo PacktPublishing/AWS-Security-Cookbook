@@ -1,0 +1,19 @@
+aws s3api put-bucket-versioning \
+--bucket awsseccookbook \
+--versioning-configuration file://resources/versioning-configuration.json \
+--profile awssecadmin
+
+aws s3api put-bucket-versioning \
+--bucket awsseccookbook \
+--versioning-configuration MFADelete=Disabled,Status=Enabled \
+--profile awssecadmin
+
+aws s3api put-bucket-versioning \
+--bucket awsseccookbook \
+--versioning-configuration MFADelete=Disabled,Status=Suspended \
+--profile awssecadmin
+
+aws s3api put-bucket-versioning \
+--bucket awsseccookbook \
+--versioning-configuration file://resources/versioning-configuration.json \
+--profile awssecadmin

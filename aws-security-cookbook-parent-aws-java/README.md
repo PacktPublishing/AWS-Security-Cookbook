@@ -1,6 +1,6 @@
-# Serverless Cookbook Parent AWS Java
+# AWS Security Cookbook Parent AWS Java
 
-This is the parent project for the example projects in the book 'Serverless Programming Cookbook' (author: Heartin Kanikathottu. publisher: Packt Publishing).
+This is the parent project for the example projects in the book 'AWS Security Cookbook' (author: Heartin Kanikathottu. publisher: Packt Publishing).
 
 POM file for this project defines the versions of dependencies, but the dependencies are commented. 
 Commented out dependency usages will help to quickly see all possible dependencies in one place. 

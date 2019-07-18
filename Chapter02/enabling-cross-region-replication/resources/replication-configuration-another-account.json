@@ -1,20 +1,21 @@
 {
-  "ReplicationConfiguration": {
-    "Role": "arn:aws:iam::135301570106:role/service-role/s3crr_role_for_awsseccookbook_to_awsseccookbookbackupmumbai",
-    "Rules": [
-      {
-        "ID": "S3CrossAccountReplicationRule",
-        "Priority": 1,
-        "Filter": {},
-        "Status": "Enabled",
-        "Destination": {
-          "Bucket": "arn:aws:s3:::awsseccookbookbackupmumbai",
-          "Account": "380701114427"
-        },
-        "DeleteMarkerReplication": {
-          "Status": "Disabled"
+  "Role": "arn:aws:iam::135301570106:role/S3CRR_ROLE_AWSSECCOOKBOOK_TO_AWSSECCOOKBOOKBACKUPMUMBAI",
+  "Rules": [
+    {
+      "ID": "S3CrossAccountReplicationRule",
+      "Priority": 1,
+      "Filter": {},
+      "Status": "Enabled",
+      "Destination": {
+        "Bucket": "arn:aws:s3:::awsseccookbookbackupmumbai",
+        "Account": "380701114427",
+        "AccessControlTranslation": {
+          "Owner": "Destination"
         }
+      },
+      "DeleteMarkerReplication": {
+        "Status": "Disabled"
       }
-    ]
-  }
+    }
+  ]
 }

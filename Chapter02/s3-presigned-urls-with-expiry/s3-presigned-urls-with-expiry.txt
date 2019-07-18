@@ -1,0 +1,5 @@
+aws s3 presign s3://awsseccookbook/mission-impossible.txt \
+    --expires-in 300 \
+    --profile awssecadmin
+
+python3 s3presign.py

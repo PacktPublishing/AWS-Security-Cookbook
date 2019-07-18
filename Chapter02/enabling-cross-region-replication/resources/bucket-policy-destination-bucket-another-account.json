@@ -1,0 +1,24 @@
+{
+  "Version": "2008-10-17",
+  "Id": "S3-Console-Replication-Policy",
+  "Statement": [
+    {
+      "Sid": "S3ReplicationPolicyStmt1",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::135301570106:root"
+      },
+      "Action": [
+        "s3:GetBucketVersioning",
+        "s3:PutBucketVersioning",
+        "s3:ReplicateObject",
+        "s3:ReplicateDelete",
+        "s3:ObjectOwnerOverrideToBucketOwner"
+      ],
+      "Resource": [
+        "arn:aws:s3:::awsseccookbookbackupmumbai",
+        "arn:aws:s3:::awsseccookbookbackupmumbai/*"
+      ]
+    }
+  ]
+}
