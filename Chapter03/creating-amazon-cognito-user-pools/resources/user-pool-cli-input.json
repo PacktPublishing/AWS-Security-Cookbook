@@ -1,0 +1,6 @@
+{
+  "PoolName": "MyUserPoolWithEmailVerification",
+  "AutoVerifiedAttributes": [
+    "email"
+  ]
+}

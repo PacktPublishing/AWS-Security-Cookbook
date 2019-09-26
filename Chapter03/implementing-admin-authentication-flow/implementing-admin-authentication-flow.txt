@@ -1,0 +1,58 @@
+aws cognito-idp create-user-pool-client \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --client-name MyClientForServerSideFromCLI \
+    --explicit-auth-flows ADMIN_NO_SRP_AUTH \
+    --region us-east-1 \
+    --profile awssecadmin
+
+aws cognito-idp admin-create-user \
+     --user-pool-id us-east-1_Q1cydt6I0 \
+     --username testuser \
+     --temporary-password Passw0rd$ \
+     --profile awssecadmin
+
+aws cognito-idp admin-initiate-auth \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --client-id 6c5f8dn6s38jsgjgs63be0cidq \
+    --auth-flow ADMIN_NO_SRP_AUTH \
+    --auth-parameters USERNAME=testuser,PASSWORD=Passw0rd$ \
+    --profile awssecadmin
+
+aws cognito-idp admin-initiate-auth \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --client-id 6c5f8dn6s38jsgjgs63be0cidq \
+    --auth-flow ADMIN_NO_SRP_AUTH \
+    --auth-parameters USERNAME=testuser,PASSWORD=Passw0rd$ \
+    --profile awssecadmin
+
+aws cognito-idp admin-respond-to-auth-challenge \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --client-id 6c5f8dn6s38jsgjgs63be0cidq \
+    --challenge-name NEW_PASSWORD_REQUIRED \
+    --challenge-responses USERNAME=testuser,NEW_PASSWORD=NewPassw0rd$ \
+    --session <session-id> \
+    --profile awssecadmin
+
+aws cognito-idp admin-initiate-auth \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --client-id 6c5f8dn6s38jsgjgs63be0cidq \
+    --auth-flow ADMIN_NO_SRP_AUTH \
+    --auth-parameters USERNAME=testuser,PASSWORD=NewPassw0rd$ \
+    --profile awssecadmin
+
+aws cognito-idp admin-initiate-auth \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --client-id 6c5f8dn6s38jsgjgs63be0cidq \
+    --auth-flow REFRESH_TOKEN_AUTH \
+    --auth-parameters REFRESH_TOKEN=eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.IIgH9i6rN6Ti0u-O5KX4sMPNurEHiWSBvEMmVVUEP_a2Jn2Sq0lCLMgUq46fqqYfESatUbHgCGRlxJnQ2eJMAbEPaaiWY6PzHk5rsyASRapO6NnVnDUvL-KhOWU4w3xUt00a4roYNvMbd1uJHX9jLU58YnGyxezM_7lF9ysXfwLsjKVKfG2pn7gj5lY5MMv6JzevEPkuZbRn4o5ACDI4qHurE__uyu1YdaNICBowgjUK1xP3YcZfSGoiJlBqJ8AZMaQyAjHTZb63zk8193rfDdUebo7RL214FOuhug0a1WE7H6CM4llpRoiDAoCRvX1TXBbjs5gzqPENZSAyq2yD-g.pDfeLDxtrGtQij-6.w8j4zGId39CL5-oqBqxvKd9LzwzhHcrTZoSCCZw5aAPJyG0aJ4kCCFLeS_5wqZMhjrIBYblgWvaEVbpM1OtTsNYyVb3WrGwJ3LRJiEr4z2m5IwBBBr4jzwp1BaT8W7nLJPdFXbOX3-Jlmw4qiiySUBYZifKr3ngqoxLwm6j0SWLaqqI1FjdBnafeMTpUztjPFYa1er7zoa-opudrVAUSB5zX_nMnhmyBrPA4vBaJbSYnaB_iiQuDibOwpX2IwZlaj2li-1dYHCi3GpY8nVwYORvBaxiu5Uyr6YE3brtD-161vwMk_51JEtsNpztlNli3CIgTPN5vXTJjee5jUCUmzUux5YcoIepRK7D1eciHEWbWPEBQtzPClLurO1xxJE_KH37ZRZzx--gyXMH3n5F5F1WGBHsR8Lh5fot7p_tm37Vk9sR-fnJJ2U1vWBMDSeiNuCtiPFNkVoPOlhahzCTWPVCBbdawm_f-Un7ev1lZJdhTZ9kEbCo2XBmyFsDKJXRlkYfXx-OQp82YTLgVqFwePWKdjjU2d_SgFRwLz5pwXCyoEURNiIvJuC41iklrmKB9qmy62YRiPP8bkqb39QOSjtvz_2yroUAGDlDWqp1g_pcEv42SU4jTUjHE9ULCTDXgObbInjKQUC9m3wAMMJIrUSEBe5Cy1wupOq0mpGMSIYkgHP-VDV0LebzfxX9BcOVD6mV0DUTNIEOmAVUBBlKTRaxXfuwqo9twWcR6-nY8Hqfrt8eKlt0Ui66GSq1z_hRa4qBVFhfL-2WEQF9i2Mvut-PuN3oDaHMPXNNvxoiuykt5Q7f05bueWMKftWYQZMqFL-ovWl23wo9iDMr4yt3uVUIfbh0wBWHzsR8ysmiLMfK4c_R0-NkhQUPjQmi237bPay7kZQGOnzusZSRbr92Af4w2D0vaOQ3ntrQCbpEIfRB3j9BJBHJSoZp4dkKCfqOePzAQ6w4Kd8GJE7noKkB0aFT5iLZeBfBwuiXW5pYKSF8LPKjiZX0fJAqfFESE8zwJuB8EjE_Pdk2xLgQYl3lG9aXMZaAKaWJvsEpYFUSsiidrbZSpMKyoqev4NC72Ps6F7odsTeMZE9sdLeH-fxw9TwpV28rrniJVcFDb2hh6U2_z2f5nYNq5J12WIuI7Nq5Zu1ppv7UmOtLraKI7YyqWorxabXp6Pugr74rCzktw5aUp-YzWgFho9xHNdYZIbvrTEtjs1W90nxFRNojp0BQxc4mlZ02qYyhlkBDCnVzU2KwKkBrs-0jo8lsvuCFe8GcRanlsk0kE_w.uy1J4qzloIBxU9QZR_sfjw \
+    --profile awssecadmin
+
+aws cognito-idp delete-user-pool-client \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --client-id 6c5f8dn6s38jsgjgs63be0cidq \
+    --profile awssecadmin
+
+aws cognito-idp admin-delete-user \
+     --user-pool-id us-east-1_Q1cydt6I0 \
+     --username testuser \
+     --profile awssecadmin

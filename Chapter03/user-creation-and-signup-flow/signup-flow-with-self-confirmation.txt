@@ -1,0 +1,16 @@
+aws cognito-idp create-user-pool-client \
+    --user-pool-id us-east-1_cRtc8peWU \
+    --client-name UserPoolClientForSignUp \
+    --profile awssecadmin
+
+aws cognito-idp sign-up \
+    --client-id 5r4f3tpvi026j51atur29uqlme \
+    --username testuser3 \
+    --password Passw0rd$ \
+    --user-attributes Name=email,Value=awsseccookbook@gmail.com
+
+aws cognito-idp confirm-sign-up \
+    --client-id 5r4f3tpvi026j51atur29uqlme \
+    --username testuser3 \
+    --confirmation-code 923042
+

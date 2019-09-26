@@ -1,0 +1,14 @@
+aws cognito-idp create-user-pool \
+    --pool-name MyFirstPoolFromCLI \
+    --region us-east-1 \
+    --profile awssecadmin
+
+-- User pool with email verification --
+
+aws cognito-idp create-user-pool \
+    --generate-cli-skeleton
+
+aws cognito-idp create-user-pool \
+    --cli-input-json file://user-pool-cli-input.json \
+    --region us-east-1 \
+    --profile awssecadmin

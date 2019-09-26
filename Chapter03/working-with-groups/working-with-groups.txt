@@ -1,0 +1,16 @@
+aws cognito-idp create-group \
+    --group-name 'AdminsCLI' \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --description 'Admins Group' \
+    --profile awssecadmin
+
+aws cognito-idp admin-add-user-to-group \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --username testuser4 \
+    --group-name Admins \
+    --profile awssecadmin
+
+aws cognito-idp admin-list-groups-for-user \
+    --username testuser4 \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --profile awssecadmin

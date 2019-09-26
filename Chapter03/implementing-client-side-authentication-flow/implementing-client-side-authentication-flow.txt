@@ -1,0 +1,27 @@
+aws cognito-idp create-user-pool-client \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --client-name my-user-pool-client \
+    --explicit-auth-flows USER_PASSWORD_AUTH \
+    --profile awssecadmin
+
+aws cognito-idp admin-create-user \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --username testuser4 \
+    --temporary-password Passw0rd$ \
+    --profile awssecadmin
+
+aws cognito-idp initiate-auth \
+    --client-id 5lbibammet3kd39of0n6vqj2am \
+    --auth-flow USER_PASSWORD_AUTH \
+    --auth-parameters USERNAME=testuser4,PASSWORD=Passw0rd$
+
+aws cognito-idp respond-to-auth-challenge \
+    --client-id 5lbibammet3kd39of0n6vqj2am \
+    --challenge-name NEW_PASSWORD_REQUIRED \
+    --challenge-responses USERNAME=testuser4,NEW_PASSWORD=NewPassw0rd$ \
+    --session <session-id>
+
+aws cognito-idp initiate-auth \
+    --client-id 5lbibammet3kd39of0n6vqj2am \
+    --auth-flow USER_PASSWORD_AUTH \
+    --auth-parameters USERNAME=testuser4,PASSWORD=NewPassw0rd$

@@ -1,0 +1,5 @@
+aws cognito-idp admin-create-user \
+     --user-pool-id us-east-1_Q1cydt6I0 \
+     --username testuser \
+     --temporary-password Passw0rd$ \
+     --profile awssecadmin

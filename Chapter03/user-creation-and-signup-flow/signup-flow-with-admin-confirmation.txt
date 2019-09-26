@@ -1,0 +1,15 @@
+aws cognito-idp create-user-pool-client \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --client-name UserPoolClientForSignUp \
+    --profile awssecadmin
+
+aws cognito-idp sign-up \
+    --client-id 7bb4jnd3mdva5hmkodkghrraog \
+    --username testuser2 \
+    --password Passw0rd$
+
+aws cognito-idp admin-confirm-sign-up \
+    --user-pool-id us-east-1_Q1cydt6I0 \
+    --username testuser2 \
+    --profile awssecadmin
+
