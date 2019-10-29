@@ -1,0 +1,51 @@
+aws kms create-key --profile awssecadmin
+
+aws kms encrypt \
+    --plaintext "hello 1" \
+    --key-id 1ab77c7a-7ca4-4387-a4c5-2fba3cb5c0f5 \
+    --profile awssecadmin
+
+aws kms encrypt \
+    --plaintext "hello 2" \
+    --key-id arn:aws:kms:us-east-1:135301570106:key/1ab77c7a-7ca4-4387-a4c5-2fba3cb5c0f5 \
+    --profile awssecadmin
+
+aws kms encrypt \
+    --plaintext "hello 3" \
+    --key-id 1ab77c7a-7ca4-4387-a4c5-2fba3cb5c0f5 \
+    --profile testuser
+
+aws iam get-user \
+    --user-name testuser \
+    --profile awssecadmin
+
+aws kms create-grant \
+    --key-id 1ab77c7a-7ca4-4387-a4c5-2fba3cb5c0f5 \
+    --grantee-principal arn:aws:iam::135301570106:user/testuser \
+    --operations "Encrypt" \
+    --profile awssecadmin
+
+aws kms encrypt \
+    --plaintext "hello 3" \
+    --key-id 1ab77c7a-7ca4-4387-a4c5-2fba3cb5c0f5 \
+    --profile testuser
+
+aws kms list-grants \
+    --key-id 1ab77c7a-7ca4-4387-a4c5-2fba3cb5c0f5 \
+    --profile awssecadmin
+
+aws kms revoke-grant \
+    --key-id 1ab77c7a-7ca4-4387-a4c5-2fba3cb5c0f5 \
+    --grant-id 3a128e48932ebb663ed0cc2c8285de7e1d03171dcd9ab2fc37cfba1605bea2fe \
+    --profile awssecadmin
+
+aws kms create-grant \
+    --key-id 1ab77c7a-7ca4-4387-a4c5-2fba3cb5c0f5 \
+    --grantee-principal arn:aws:iam::135301570106:user/testuser \
+    --operations "Encrypt" "Decrypt" \
+    --profile awssecadmin
+
+aws kms retire-grant \
+    --key-id arn:aws:kms:us-east-1:135301570106:key/1ab77c7a-7ca4-4387-a4c5-2fba3cb5c0f5 \
+    --grant-id 8764bc2e411e455922b65506ecda1da12136fe57c759fcb2572d964e41fb6567 \
+    --profile awssecadmin
