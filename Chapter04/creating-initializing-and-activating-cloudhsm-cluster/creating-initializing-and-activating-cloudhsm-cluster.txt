@@ -1,0 +1,41 @@
+-- Commands for downloading and verifying certificates --
+
+aws cloudhsmv2 describe-clusters \
+    --filters clusterIds=cluster-rbn5yrg4huk \
+    --output text \
+    --query 'Clusters[].Certificates.ClusterCsr' \
+    > cluster-rbn5yrg4huk_ClusterCsr.csr \
+    --profile awssecadmin
+
+aws cloudhsmv2 describe-clusters \
+    --filters clusterIds=cluster-rbn5yrg4huk \
+    --output text \
+    --query 'Clusters[].Certificates.ClusterCsr' \
+    --profile awssecadmin
+
+aws cloudhsmv2 describe-clusters \
+    --filters clusterIds=cluster-rbn5yrg4huk \
+    --output text \
+    --query 'Clusters[].Certificates.HsmCertificate' \
+    > cluster-rbn5yrg4huk_HsmCertificate.crt \
+    --profile awssecadmin
+
+aws cloudhsmv2 describe-clusters \
+    --filters clusterIds=cluster-rbn5yrg4huk \
+    --output text \
+    --query 'Clusters[].Certificates.AwsHardwareCertificate' \
+    > cluster-rbn5yrg4huk_AwsHardwareCertificate.crt \
+    --profile awssecadmin
+
+aws cloudhsmv2 describe-clusters \
+    --filters clusterIds=cluster-rbn5yrg4huk \
+    --output text \
+    --query 'Clusters[].Certificates.ManufacturerHardwareCertificate' \
+    > cluster-rbn5yrg4huk_ManufacturerHardwareCertificate.crt \
+    --profile awssecadmin
+
+cat cluster-rbn5yrg4huk_AwsHardwareCertificate.crt \
+      AWS_CloudHSM_Root-G1.crt \
+      > cluster-rbn5yrg4huk_AWS_chain.crt
+
+openssl verify -CAfile cluster-rbn5yrg4huk_AWS_chain.crt cluster-rbn5yrg4huk_HsmCertificate.crt

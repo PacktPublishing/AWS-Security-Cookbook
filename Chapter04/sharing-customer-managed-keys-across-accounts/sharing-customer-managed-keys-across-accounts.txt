@@ -1,0 +1,10 @@
+aws kms encrypt \
+    --plaintext "hello 4" \
+    --key-id arn:aws:kms:us-east-1:135301570106:key/d791248f-c742-4ed9-a081-cfa314dd6903 \
+    --profile awschild1admin
+
+aws kms encrypt \
+    --plaintext "hello 5" \
+    --key-id arn:aws:kms:us-east-1:135301570106:key/d791248f-c742-4ed9-a081-cfa314dd6903 \
+    --profile child1_testuser
+
